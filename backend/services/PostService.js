@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const PostModel = require("../models/Post");
 
 // 전체 게시글 조회
@@ -11,16 +12,23 @@ exports.createPost = async (post) => {
 };
 
 // 특정 게시글 조회
-exports.getPostById = async (id) => {
-  return await PostModel.findById(id);
+exports.getPostById = async (postId) => {
+  const _id = new mongoose.Types.ObjectId(postId);
+  return await PostModel.findOne({
+    _id: _id,
+  });
+  // .populate("name")
 };
 
 // 게시글 수정
-exports.updatePost = async (id, post) => {
-  return await PostModel.findByIdAndUpdate(id, post);
+exports.updatePost = async (postId) => {
+  const _id = new mongoose.Types.ObjectId(postId);
+  return await PostModel.findByIdAndUpdate({
+    _id: _id,
+  });
 };
 
 // 게시글 삭제
-exports.deletePost = async (id) => {
-  return await PostModel.findByIdAndDelete(id);
+exports.deletePost = async (postId) => {
+  return await PostModel.findByIdAndDelete(postId);
 };

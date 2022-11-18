@@ -13,8 +13,8 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json({ extended: false }));
 
 // Define Routes
-app.use("/users", require("./routes/api/register"));
-app.use("/posts", postRouter);
+app.use(require("./routes/api/register"));
+app.use(postRouter);
 
 // get요청시 "API Running" 을 response 해주기
 app.get("/", (req, res) => {

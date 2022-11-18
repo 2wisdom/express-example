@@ -11,6 +11,7 @@ const {
 const router = express.Router();
 
 router.route("/posts").get(getAllPosts).post(createPost);
+
 router
   .route("/posts/:postId")
   .get(getPostById)

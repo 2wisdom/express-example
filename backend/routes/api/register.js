@@ -10,13 +10,13 @@ const bcrypt = require("bcryptjs");
 // @desc   Register user
 // @access Public
 
-router.post("/", async (req, res) => {
+router.post("/users", async (req, res) => {
   // req의 body 정보를 사용하려면 server.js 에서 따로 설정을 해줘야함
   const { name, email, password } = req.body;
 
   try {
     // name과 email을 비교하여 user가 이미 존재하는지 확인
-    const user = await User.findOne({ name, email });
+    let user = await User.findOne({ name, email });
     if (user) {
       return res.status(400).json({ errors: [{ msg: "User already exists" }] });
     }
