@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+
 const UserSchema = require("./User");
 
 const PostSchema = new mongoose.Schema({
   name: {
-    type: UserSchema,
+    type: String,
     required: true,
   },
   title: {
@@ -14,13 +15,13 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  createAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updateAt: {
-    type: Date,
-  },
+  // createAt: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
+  // updateAt: {
+  //   type: Date,
+  // },
 });
 
 module.exports = Post = mongoose.model("post", PostSchema);

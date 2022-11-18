@@ -2,6 +2,8 @@
 const express = require("express");
 const connectDB = require("./config/db");
 
+const postRouter = require("./routes/PostRoutes");
+
 // app 생성
 const app = express();
 // PORT 번호 기본값 5000으로 설정
@@ -12,6 +14,7 @@ app.use(express.json({ extended: false }));
 
 // Define Routes
 app.use("/users", require("./routes/api/register"));
+app.use("/posts", postRouter);
 
 // get요청시 "API Running" 을 response 해주기
 app.get("/", (req, res) => {
