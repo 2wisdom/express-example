@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Types = mongoose.Types;
 
 const UserSchema = require("./User");
 
@@ -8,6 +9,10 @@ const PostSchema = new mongoose.Schema({
   //   required: true,
   //   ref: "user",
   // },
+  _id: {
+    type: String,
+    default: () => String(new Types.ObjectId()),
+  },
   title: {
     type: String,
     required: true,
@@ -16,13 +21,7 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // createAt: {
-  //   type: Date,
-  //   default: Date.now,
-  // },
-  // updateAt: {
-  //   type: Date,
-  // },
+  // timestamps: true
 });
 
 module.exports = Post = mongoose.model("post", PostSchema);
