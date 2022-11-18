@@ -40,7 +40,7 @@ exports.updatePost = async (req, res) => {
   try {
     console.log("게시글 수정");
     const { postId } = req.params;
-    const post = await postService.updatePost(postId);
+    const post = await postService.updatePost(postId, req.body);
     res.json({ data: post, status: "success" });
   } catch (err) {
     res.status(500).json({ error: err.message });
